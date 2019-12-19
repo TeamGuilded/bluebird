@@ -196,7 +196,7 @@ Promise.coroutine = function (generatorFunction, options) {
     }
     var yieldHandler = Object(options).yieldHandler;
     var PromiseSpawn$ = PromiseSpawn;
-    var stack = new Error().stack;
+    var stack = Promise.hasLongStackTraces() ? new Error().stack : '';
     return function () {
         var generator = generatorFunction.apply(this, arguments);
         var spawn = new PromiseSpawn$(undefined, undefined, yieldHandler,
