@@ -1,3 +1,7 @@
+The purpose of this fork is to fix a memory issue with Promise.coroutine tracking unncessary stack traces, which manifests itself while using this async-to-generator babel plugin https://babeljs.io/docs/en/babel-plugin-transform-async-to-generator.
+
+---
+
 <a href="http://promisesaplus.com/">
     <img src="http://promisesaplus.com/assets/logo-small.png" alt="Promises/A+ logo"
          title="Promises/A+ 1.1 compliant" align="right" />
