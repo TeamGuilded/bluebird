@@ -778,11 +778,9 @@ require("./join")(
     Promise, PromiseArray, tryConvertToPromise, INTERNAL, async);
 Promise.Promise = Promise;
 Promise.version = "3.7.2";
-require('./map.js')(Promise, PromiseArray, apiRejection, tryConvertToPromise, INTERNAL, debug);
 require('./call_get.js')(Promise);
-require('./using.js')(Promise, apiRejection, tryConvertToPromise, createContext, INTERNAL, debug);
-require('./timers.js')(Promise, INTERNAL, debug);
 require('./generators.js')(Promise, apiRejection, INTERNAL, tryConvertToPromise, Proxyable, debug);
+require('./map.js')(Promise, PromiseArray, apiRejection, tryConvertToPromise, INTERNAL, debug);
 require('./nodeify.js')(Promise);
 require('./promisify.js')(Promise, INTERNAL);
 require('./props.js')(Promise, PromiseArray, tryConvertToPromise, apiRejection);
@@ -790,9 +788,11 @@ require('./race.js')(Promise, INTERNAL, tryConvertToPromise, apiRejection);
 require('./reduce.js')(Promise, PromiseArray, apiRejection, tryConvertToPromise, INTERNAL, debug);
 require('./settle.js')(Promise, PromiseArray, debug);
 require('./some.js')(Promise, PromiseArray, apiRejection);
-require('./filter.js')(Promise, INTERNAL);
-require('./each.js')(Promise, INTERNAL);
+require('./timers.js')(Promise, INTERNAL, debug);
+require('./using.js')(Promise, apiRejection, tryConvertToPromise, createContext, INTERNAL, debug);
 require('./any.js')(Promise);
+require('./each.js')(Promise, INTERNAL);
+require('./filter.js')(Promise, INTERNAL);
                                                          
     util.toFastProperties(Promise);                                          
     util.toFastProperties(Promise.prototype);                                

@@ -2140,7 +2140,7 @@ PromiseSpawn.prototype._isResolved = function() {
 
 PromiseSpawn.prototype._cleanup = function() {
     this._promise = this._generator = null;
-    if (debug.cancellation() && this._finallyPromise !== null) {
+    if (debug.cancellation() && !!this._finallyPromise) {
         this._finallyPromise._fulfill();
         this._finallyPromise = null;
     }
@@ -3597,11 +3597,9 @@ _dereq_("./join")(
     Promise, PromiseArray, tryConvertToPromise, INTERNAL, async);
 Promise.Promise = Promise;
 Promise.version = "3.7.2";
-_dereq_('./map.js')(Promise, PromiseArray, apiRejection, tryConvertToPromise, INTERNAL, debug);
 _dereq_('./call_get.js')(Promise);
-_dereq_('./using.js')(Promise, apiRejection, tryConvertToPromise, createContext, INTERNAL, debug);
-_dereq_('./timers.js')(Promise, INTERNAL, debug);
 _dereq_('./generators.js')(Promise, apiRejection, INTERNAL, tryConvertToPromise, Proxyable, debug);
+_dereq_('./map.js')(Promise, PromiseArray, apiRejection, tryConvertToPromise, INTERNAL, debug);
 _dereq_('./nodeify.js')(Promise);
 _dereq_('./promisify.js')(Promise, INTERNAL);
 _dereq_('./props.js')(Promise, PromiseArray, tryConvertToPromise, apiRejection);
@@ -3609,9 +3607,11 @@ _dereq_('./race.js')(Promise, INTERNAL, tryConvertToPromise, apiRejection);
 _dereq_('./reduce.js')(Promise, PromiseArray, apiRejection, tryConvertToPromise, INTERNAL, debug);
 _dereq_('./settle.js')(Promise, PromiseArray, debug);
 _dereq_('./some.js')(Promise, PromiseArray, apiRejection);
-_dereq_('./filter.js')(Promise, INTERNAL);
-_dereq_('./each.js')(Promise, INTERNAL);
+_dereq_('./timers.js')(Promise, INTERNAL, debug);
+_dereq_('./using.js')(Promise, apiRejection, tryConvertToPromise, createContext, INTERNAL, debug);
 _dereq_('./any.js')(Promise);
+_dereq_('./each.js')(Promise, INTERNAL);
+_dereq_('./filter.js')(Promise, INTERNAL);
                                                          
     util.toFastProperties(Promise);                                          
     util.toFastProperties(Promise.prototype);                                

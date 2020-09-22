@@ -61,7 +61,7 @@ PromiseSpawn.prototype._isResolved = function() {
 
 PromiseSpawn.prototype._cleanup = function() {
     this._promise = this._generator = null;
-    if (debug.cancellation() && this._finallyPromise !== null) {
+    if (debug.cancellation() && !!this._finallyPromise) {
         this._finallyPromise._fulfill();
         this._finallyPromise = null;
     }
